@@ -21,7 +21,7 @@ if (roundsPlayed === 5) {
         resultTracker.appendChild(loser);
     } else {
         draw = document.createElement('div');
-        draw.textContent = 'You lost the best of 5! Better luck next time.';
+        draw.textContent = 'Match draw!';
         resultTracker.appendChild(draw);
     }
 };
