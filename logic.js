@@ -1,7 +1,38 @@
 let roundsPlayed = 0;
 let playerScore = 0;
 let computerScore = 0;
-playGame();
+// playGame();
+
+const rockBtn = document.querySelector('button');
+const paperBtn = document.querySelector('.paper');
+const scissorsBtn = document.querySelector('.scissors');
+const results = document.querySelector('.results');
+
+
+rockBtn.addEventListener('click', () => {
+    roundResult = calcRoundResult('rock')
+    text = document.createElement('div')
+    text.textContent = roundResult;
+    results.appendChild(text);
+    roundsPlayed += 1;
+});
+
+paperBtn.addEventListener('click', () => {
+    roundResult = calcRoundResult('paper')
+    text = document.createElement('div')
+    text.textContent = roundResult;
+    results.appendChild(text);
+    roundsPlayed += 1;
+});
+
+scissorsBtn.addEventListener('click', () => {
+    roundResult = calcRoundResult('scissors')
+    text = document.createElement('div')
+    text.textContent = roundResult;
+    results.appendChild(text);
+    roundsPlayed += 1;
+});
+
 
 // Logic has a slight bias to scissors by like 3.3%
 // Rework logic to use decimals instead of ints
@@ -16,7 +47,8 @@ function getComputerchoice() {
     }
 }
 
-function calcRoundResult(computerSelection, playerSelection) {
+function calcRoundResult(playerSelection) {
+    computerSelection = getComputerchoice();
     playerSelection = playerSelection.toLowerCase();
 
     if (computerSelection === "rock" && playerSelection === "rock") {
