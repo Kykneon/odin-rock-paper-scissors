@@ -9,20 +9,52 @@ const resultTracker = document.querySelector('.results');
 const playerScoreTracker = document.querySelector('.player-score');
 const computerScoreTracker = document.querySelector('.computer-score');
 
+rockBtn.addEventListener('click', () => {
+    roundResult = calcRoundResult('rock')
+    text = document.createElement('div')
+    text.textContent = roundResult;
+    resultTracker.appendChild(text);
+    roundsPlayed += 1;
+    updateGameScore(roundResult);
+    checkGameState();
+});
+
+paperBtn.addEventListener('click', () => {
+    roundResult = calcRoundResult('paper')
+    text = document.createElement('div')
+    text.textContent = roundResult;
+    resultTracker.appendChild(text);
+    roundsPlayed += 1;
+    updateGameScore(roundResult);
+    checkGameState();
+});
+
+scissorsBtn.addEventListener('click', () => {
+    roundResult = calcRoundResult('scissors')
+    text = document.createElement('div')
+    text.textContent = roundResult;
+    resultTracker.appendChild(text);
+    roundsPlayed += 1;
+    updateGameScore(roundResult);
+    checkGameState();
+});
+
 // Once 5 rounds have been played compares player/computer score and determines game winner
-if (roundsPlayed === 5) {
-    if (playerScore > computerScore) {
-        winner = document.createElement('div');
-        winner.textContent = 'You won the best of 5! Congradulations!';
-        resultTracker.appendChild(winner);
-    } else if (computerScore > playerScore) {
-        loser = document.createElement('div');
-        loser.textContent = 'You lost the best of 5! Better luck next time.';
-        resultTracker.appendChild(loser);
-    } else {
-        draw = document.createElement('div');
-        draw.textContent = 'Match draw!';
-        resultTracker.appendChild(draw);
+function checkGameState() {
+    if (roundsPlayed === 5) {
+        if (playerScore > computerScore) {
+            winner = document.createElement('div');
+            winner.textContent = 'You won the best of 5! Congradulations!';
+            resultTracker.appendChild(winner);
+        } else if (computerScore > playerScore) {
+            loser = document.createElement('div');
+            loser.textContent = 'You lost the best of 5! Better luck next time.';
+            resultTracker.appendChild(loser);
+        } else {
+            draw = document.createElement('div');
+            draw.textContent = 'Match draw!';
+            resultTracker.appendChild(draw);
+        }
     }
 };
 
@@ -80,30 +112,4 @@ function calcRoundResult(playerSelection) {
     }
 };
 
-rockBtn.addEventListener('click', () => {
-    roundResult = calcRoundResult('rock')
-    text = document.createElement('div')
-    text.textContent = roundResult;
-    resultTracker.appendChild(text);
-    roundsPlayed += 1;
-    updateGameScore(roundResult);
-});
-
-paperBtn.addEventListener('click', () => {
-    roundResult = calcRoundResult('paper')
-    text = document.createElement('div')
-    text.textContent = roundResult;
-    resultTracker.appendChild(text);
-    roundsPlayed += 1;
-    updateGameScore(roundResult);
-});
-
-scissorsBtn.addEventListener('click', () => {
-    roundResult = calcRoundResult('scissors')
-    text = document.createElement('div')
-    text.textContent = roundResult;
-    resultTracker.appendChild(text);
-    roundsPlayed += 1;
-    updateGameScore(roundResult);
-});
 
